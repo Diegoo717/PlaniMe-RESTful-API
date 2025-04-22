@@ -1,14 +1,10 @@
 const express = require('express');
-const path = require('path');
-const { register, login } = require('../controllers/authController');
+const { createUser } = require('../controllers/registerController');
+const { searchUser } = require('../controllers/loginController');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../frontend-app/HTML/index.html'));
-});
-
-router.post('/register', register);
-router.post('/login', login);
+router.post('/register', createUser)
+router.post('/login', searchUser)
 
 module.exports = router;
