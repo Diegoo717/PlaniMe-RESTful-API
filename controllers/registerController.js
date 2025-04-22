@@ -3,12 +3,7 @@ const { User } = require('../models');
 
 const createUser = async (req, res) => {
     try {
-        const { 
-            firstName, 
-            lastName, 
-            email, 
-            password 
-        } = req.body;
+        const { firstName, lastName, email, password } = req.body;
 
         if (!firstName || !lastName || !email || !password) {
             return res.status(400).json({ error: 'All fields are required' });
@@ -19,28 +14,33 @@ const createUser = async (req, res) => {
             return res.status(400).json({ error: nameError });
         }
 
-        const lastNameError = lastNameValidate(lastName)
+        const lastNameError = lastNameValidate(lastName);
         if (lastNameError) {
             return res.status(400).json({ error: lastNameError });
         }
 
-        const emailError = emailValidate(email)
+        const emailError = emailValidate(email);
         if (emailError) {
             return res.status(400).json({ error: emailError });
         }
 
-        const passwordError = passwordValidate(password)
+        const passwordError = passwordValidate(password);
         if (passwordError) {
             return res.status(400).json({ error: passwordError });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10); 
+        const existingUser = await User.findOne({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ error: 'El correo ya está registrado' });
+        }
 
-        const newUser = await User.create({ 
-            firstName, 
-            lastName, 
-            email, 
-            password: hashedPassword 
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = await User.create({
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword
         });
 
         res.status(201).json({
@@ -50,9 +50,9 @@ const createUser = async (req, res) => {
 
     } catch (error) {
         console.error("Error to create a user", error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: "Server internal error",
-            details: error.message 
+            details: error.message
         });
     }
 };
