@@ -1,0 +1,70 @@
+const { ProgressWeight } = require('../../../models');
+
+const changeWeightRecord = async (req, res) => {
+    try {
+        const { id, weight, date } = req.body; 
+
+        if (!req.user?.userId) {
+            return res.status(401).json({ error: 'Usuario no autenticado' });
+        }
+
+        if (!id) {
+            return res.status(400).json({ error: 'ID de registro no proporcionado' });
+        }
+
+        if (!weight && !date) {
+            return res.status(400).json({ error: 'Debe proporcionar al menos un campo para actualizar (weight o date)' });
+        }
+
+        const record = await ProgressWeight.findOne({
+            where: {
+                id,
+                userId: req.user.userId 
+            }
+        });
+
+        if (!record) {
+            return res.status(404).json({ 
+                error: 'Registro no encontrado o no pertenece al usuario' 
+            });
+        }
+
+        const updateData = {};
+        if (weight) {
+            if (isNaN(weight)) {
+                return res.status(400).json({ error: 'El peso debe ser un número válido' });
+            }
+            updateData.weight = parseFloat(weight);
+        }
+
+        if (date) {
+            const newDate = new Date(date);
+            if (isNaN(newDate.getTime())) {
+                return res.status(400).json({ error: 'Formato de fecha no válido' });
+            }
+            updateData.date = newDate;
+        }
+
+        await record.update(updateData);
+
+        return res.json({
+            success: true,
+            message: 'Registro actualizado exitosamente',
+            data: {
+                id: record.id,
+                weight: record.weight,
+                date: record.date,
+                userId: record.userId
+            }
+        });
+
+    } catch (error) {
+        console.error('Error al actualizar registro:', error);
+        return res.status(500).json({ 
+            error: 'Error interno del servidor',
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
+    }
+};
+
+module.exports = { changeWeightRecord };

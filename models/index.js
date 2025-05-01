@@ -2,6 +2,8 @@ const sequelize = require('../config/database');
 
 const User = require('./user');
 const Plan = require('./Plan');
+const ProgressWeight = require('./progressWeight');
+const WeightGoal = require('./weightGoal');
 
 User.associate = function(models) {
   User.hasMany(models.Plan, {
@@ -15,7 +17,9 @@ Plan.associate({ User });
 const db = {
   sequelize,
   User,
-  Plan
+  Plan,
+  ProgressWeight,
+  WeightGoal
 };
 
 const syncDatabase = async () => {

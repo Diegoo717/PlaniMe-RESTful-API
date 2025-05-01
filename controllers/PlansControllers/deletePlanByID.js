@@ -27,17 +27,6 @@ const deleteUserPlan = async (req, res) => {
             });
         }
 
-        if (plan.planImagePath) {
-            const imagePath = path.join(__dirname, '../../plans', plan.planImagePath);
-            try {
-                if (fs.existsSync(imagePath)) {
-                    fs.unlinkSync(imagePath);
-                }
-            } catch (err) {
-                console.error('Error al eliminar la imagen:', err);
-            }
-        }
-
         await plan.destroy();
 
         res.json({
