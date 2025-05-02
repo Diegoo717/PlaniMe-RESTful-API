@@ -26,7 +26,7 @@ router.post('/setWeightRecord', setWeightRecord);
 router.post('/setWeightGoal', setWeightGoal);
 router.put('/changeWeightR', changeWeightRecord);
 router.delete('/deleteWeightG', deleteWeightGoal);
-router.delete('/deleteWeightR', deleteWeightRecord);
+router.delete('/deleteWeightR/:recordId', deleteWeightRecord);
 router.get('/getAllWeightR', getAllWeightRecords);
 router.get('/getWeightGoal', getWeightGoal);
 
