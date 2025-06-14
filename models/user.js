@@ -13,11 +13,24 @@ const User = sequelize.define('User', {
     email: {  
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        validate: {
+            isEmail: true
+        }
     },
     password: {  
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true 
+    },
+    googleId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true
+    },
+    provider: {
+        type: DataTypes.STRING, 
+        allowNull: false,
+        defaultValue: 'local'
     }
 });
 
