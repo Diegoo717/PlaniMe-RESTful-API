@@ -6,7 +6,7 @@ function resend(email, fullName, date, time, service, code) {
 
   (async function () {
     const { data, error } = await resend.emails.send({
-      from: "HairRush <soport@" + process.env.DOMAIN + ">",
+      from: "PlaniMe <soport@" + process.env.DOMAIN + ">",
       to: [email],
       subject: "",
       html: ``,
