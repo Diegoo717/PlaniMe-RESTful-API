@@ -31,7 +31,20 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING, 
         allowNull: false,
         defaultValue: 'local'
-    }
+    },
+    code: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      is: /^[A-Za-z0-9]{9}$/,
+      isValidCode(value) {
+        if (!/^[A-Za-z0-9]{9}$/.test(value)) {
+          throw new Error("Invalid code format");
+        }
+      },
+    },
+  },
 });
 
 module.exports = User;
