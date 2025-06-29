@@ -17,7 +17,7 @@ function resend(email, verificationCode, userName) {
   <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center;">
     <p style="margin: 5px 0; font-size: 18px;">Tu código de verificación es:</p>
     <p style="font-size: 24px; font-weight: bold; letter-spacing: 2px; color: #2e7d32;">${verificationCode}</p>
-    <p style="font-size: 14px; color: #666;">(Válido por 15 minutos)</p>
+    <p style="font-size: 14px; color: #666;">(No compartas este código con nadie)</p>
   </div>
   
   <p style="text-align: center;">Ingresa este código en nuestra plataforma para continuar con el proceso.</p>

@@ -1,5 +1,4 @@
 const db = require('../../models/index')
-const jwt = require('jsonwebtoken');
 const { resend } = require('../../services/resend')
 const User = db.User
 
@@ -10,7 +9,7 @@ async function emailForRecobery (req, res) {
         const user = await User.findOne({ where: { email } });
 
         if(!user){
-            res.status(400).json("Email not found")
+            return res.status(400).json("Email not found")
         }
 
         userName = user.firstName
