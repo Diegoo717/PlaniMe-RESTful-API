@@ -1,4 +1,4 @@
-require("dotenv").config;
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const db = require("../../models/index");
 const User = db.User;
@@ -19,8 +19,9 @@ async function codeVerification(req, res) {
     user.code = newCode;
     await user.save()
 
+    console.log(process.env.JWT_SECRET)
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
-      expiresIn: "15m",
+      expiresIn: "10m",
     });
 
     res

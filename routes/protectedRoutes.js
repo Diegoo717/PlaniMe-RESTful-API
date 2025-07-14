@@ -12,6 +12,7 @@ const { deleteWeightRecord } = require('../controllers/data/progressUser/deleteW
 const { changeWeightRecord } = require('../controllers/data/progressUser/changeWeightRecord');
 const { getAllWeightRecords } = require('../controllers/data/progressUser/getAllWeightRecords');
 const { getWeightGoal } = require('../controllers/data/progressUser/getWeightGoal');
+const { changePassword } = require('../controllers/auth/changePassword');
 
 router.get('/session', authenticateToken, (req, res) => {
     res.status(200).json({ message: 'Session valid', user: req.user });
@@ -29,5 +30,6 @@ router.delete('/deleteWeightG', deleteWeightGoal);
 router.delete('/deleteWeightR/:recordId', deleteWeightRecord);
 router.get('/getAllWeightR', getAllWeightRecords);
 router.get('/getWeightGoal', getWeightGoal);
+router.put('/changePassword', changePassword);
 
 module.exports = router;
