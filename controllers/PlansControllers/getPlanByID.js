@@ -22,11 +22,9 @@ const getUserPlans = async (req, res) => {
             });
         }
 
-        const baseUrl = `${req.protocol}://${req.get('host')}`;
-
         const formattedPlans = plans.map(plan => ({
             name: plan.planName,
-            imageUrl: `${baseUrl}/plans/${plan.planImagePath.replace(/\\/g, '/')}`, 
+            imageUrl: plan.planImagePath, 
             details: {
                 id: plan.id,
                 userId: plan.userId,
@@ -43,6 +41,8 @@ const getUserPlans = async (req, res) => {
                 updatedAt: plan.updatedAt
             }
         }));
+
+        console.log('Planes obtenidos y sus URLs:', formattedPlans.map(p => p.imageUrl));
 
         res.json({
             success: true,

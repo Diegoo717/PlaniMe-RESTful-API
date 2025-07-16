@@ -1,5 +1,6 @@
 const { User, Plan } = require('../../models');
 const path = require('path');
+const cloudinary = require('../../config/cloudinary');
 
 function normalizeActivityLevel(activity) {
   const activityMap = {
@@ -137,11 +138,16 @@ function selectPlan(gender, weightLevel, activityLevel, goal) {
   };
 
   const planName = plans[gender][weightLevel][activityLevel][goal];
-  const planImagePath = path.join(genderFolder, planName);
+  const publicId = `Plans/${genderFolder}/${planName}`;
+
+  const planImageUrl = cloudinary.url(publicId, {
+  secure: true
+});
+
 
   return {
     planName: planName.replace('.jpg', '').replace(/_/g, ' '),
-    planImagePath
+    planImageUrl
   };
 }
 
@@ -168,7 +174,7 @@ const createPlan = async (req, res) => {
     const normalizedActivity = normalizeActivityLevel(activityLevel);
     const normalizedGoal = normalizeGoal(goal);
 
-    const { planName, planImagePath } = selectPlan(
+    const { planName, planImageUrl } = selectPlan(
       gender, 
       weightLevel, 
       normalizedActivity, 
@@ -185,17 +191,14 @@ const createPlan = async (req, res) => {
       goal: normalizedGoal,
       imc,
       planName,
-      planImagePath: planImagePath.replace(/\\/g, '/') 
+      planImagePath: planImageUrl
     });
-
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
-    const fullImageUrl = `${baseUrl}/plans/${newPlan.planImagePath}`;
 
     res.json({
       success: true,
       plan: {
         name: planName,
-        imageUrl: fullImageUrl,
+        imageUrl: planImageUrl,
         details: newPlan
       }
     });
