@@ -42,7 +42,7 @@ app.use('/auth', googleAuthRoutes);
 app.use('/api/auth', googleAuthRoutes);
 
 app.get('/', (req, res) => {
-    res.send('API ready :)');
+    res.send('API ready and in production ;)');
 });
 
 app.get('/debug/session', (req, res) => {
@@ -65,6 +65,3 @@ app.listen(PORT, () => {
     console.log(`Modo: ${process.env.NODE_ENV || 'development'}`);
 });
 
-// Configuration for deployment on Railway - Updated: [07/15/2025]
-// Secod attempt
-// Third attempt
