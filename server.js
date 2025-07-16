@@ -66,4 +66,3 @@ app.listen(PORT, () => {
 });
 
 // Configuration for deployment on Railway - Updated: [07/15/2025]
-// Second attempt
