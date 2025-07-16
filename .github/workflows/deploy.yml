@@ -2,39 +2,46 @@ name: Deploy to Railway
 
 on:
   push:
-    branches: [ "master" ]
-  
+    branches: [master] 
+  pull_request:
+    branches: [master]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"  
-
-      - name: Verify Env Variables
-        run: |
-          echo "NODE_ENV: ${{ vars.NODE_ENV || 'Not set' }}"
-          echo "Railway token present: ${{ secrets.RAILWAY_TOKEN != '' }}"
-
-      - name: Install dependencies
-        run: npm ci  
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-
-      - name: Verify Railway Token
-        run: |
-          railway status --token $RAILWAY_TOKEN || echo "Token verification failed"
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-
-      - name: Deploy to Railway
-        run: |
-          railway switch --token $RAILWAY_TOKEN <PROJECT_ID>
-          railway up --detach --token $RAILWAY_TOKEN
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.12.0' 
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests (opcional)
+      run: npm test
+      continue-on-error: true
+    
+    - name: Install Railway CLI
+      run: npm install -g @railway/cli
+    
+    - name: Verify Railway connection
+      run: railway status
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    
+    - name: Deploy to Railway
+      run: railway up --service "PlaniMe-RESTful-API" --detach
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      timeout-minutes: 10
+    
+    - name: Check deployment status
+      run: railway status
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
