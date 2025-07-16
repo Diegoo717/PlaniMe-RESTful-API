@@ -64,3 +64,5 @@ app.listen(PORT, () => {
     console.log(`Local server run in http://localhost:${PORT}`);
     console.log(`Modo: ${process.env.NODE_ENV || 'development'}`);
 });
+
+// Configuration for deployment on Railway - Updated: [07/15/2025]
