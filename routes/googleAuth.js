@@ -8,12 +8,12 @@ router.get('/google',
 
 router.get('/google/callback',
     passport.authenticate('google', {
-        failureRedirect: 'http://localhost:5500/pages/auth/login.html?error=google_auth_failed',
+        failureRedirect: 'https://planime.diecode.lat/pages/auth/login.html?error=google_auth_failed',
         session: true
     }),
     (req, res) => {
         console.log('Google callback successful, user:', req.user ? req.user.id : 'no user');
-        res.redirect('http://localhost:5500/pages/home/dashboard.html?from_google=true&auth_success=true');
+        res.redirect('https://planime.diecode.lat/pages/home/dashboard.html?from_google=true&auth_success=true');
     }
 );
 
