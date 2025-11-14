@@ -1,331 +1,393 @@
-# PlaniMe RESTful API 🌐
+<div align="center">
 
-Una API RESTful robusta desarrollada con Node.js, Express y Sequelize sobre MySQL, que proporciona servicios de backend para la gestión de planes nutricionales personalizados con arquitectura modular y seguridad avanzada.
+# 🍎 PlaniMe RESTful API 🌐
 
-🔗 **[API en Producción](https://planime-rest-api.diecode.lat/)**
+**Robust backend for personalized nutrition: secure, scalable, and feature-rich**
 
-## 📋 Descripción
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com/)
+[![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)](https://sequelize.org/)
 
-PlaniMe RESTful API es el backend robusto de PlaniMe, desarrollado con Node.js, Express y Sequelize sobre MySQL. Implementa controladores modulares, validación de datos, middleware para autenticación y autorización JWT, expone endpoints estructurados y está optimizada para integrarse con múltiples clientes frontend (web y móvil).
+🔗 **[Production API](https://planime-rest-api.diecode.lat/)**
 
-## 🚀 Características Principales
+</div>
 
-- ✅ **Arquitectura RESTful**: Endpoints estructurados y semánticos
-- 🔐 **Autenticación Múltiple**: JWT, Google OAuth y sesiones seguras
-- 📊 **Gestión de Planes**: CRUD completo de planes nutricionales personalizados
-- 🏗️ **Arquitectura Modular**: Controladores, middleware y servicios separados
-- 🛡️ **Seguridad Avanzada**: Middleware de autenticación, autorización y validación
-- 📧 **Servicios de Email**: Recuperación de contraseña y verificación de códigos
-- 📈 **Seguimiento de Progreso**: Gestión de peso y objetivos nutricionales
-- 🌐 **CORS Configurado**: Soporte para múltiples dominios frontend
-- ☁️ **Despliegue Automático**: CI/CD con GitHub Actions
+---
 
-## 🛠️ Tecnologías
+## 🎯 About The Project
 
-### Backend
-- **Node.js**: Entorno de ejecución JavaScript
-- **Express.js**: Framework web minimalista y flexible
-- **Sequelize**: ORM para JavaScript con soporte para MySQL
+**PlaniMe RESTful API** is the robust backend powering PlaniMe's personalized nutrition platform. Built with Node.js, Express, and Sequelize over MySQL, it implements modular controllers, data validation, JWT authentication middleware, and exposes structured endpoints optimized for integration with multiple frontend clients (web and mobile).
 
-### Base de Datos
-- **MySQL**: Sistema de gestión de bases de datos relacional
+### What Makes Our API Special?
 
-### Autenticación y Seguridad
-- **JSON Web Tokens (JWT)**: Autenticación stateless
-- **Passport.js**: Middleware de autenticación (Google OAuth)
-- **Express Session**: Gestión de sesiones
-- **bcrypt**: Hashing de contraseñas
+- 🏗️ **Modular Architecture**: Clean separation of controllers, middleware, and services
+- 🔐 **Multi-Layer Security**: JWT, Google OAuth, and secure session management
+- 📊 **Comprehensive Nutrition Management**: Complete CRUD for personalized meal plans
+- ⚡ **High Performance**: Optimized database queries and connection pooling
+- 🌐 **CORS Configured**: Support for multiple frontend domains
+- 🚀 **Automated Deployment**: CI/CD with GitHub Actions
 
-### Servicios Externos
-- **Cloudinary**: Gestión y almacenamiento de imágenes
-- **Resend**: Servicio de envío de emails
-- **Google OAuth 2.0**: Autenticación social
+---
 
-### DevOps
-- **GitHub Actions**: CI/CD pipeline
-- **Railway**: Plataforma de despliegue en la nube
+## ✨ Key Features
 
-## 📁 Estructura del Proyecto
+### 🔐 Advanced Authentication
 
-```
-PLANIME-RESTFUL-API/
-│
-├── .github/
-│   └── workflows/
-│       └── deploy.yml              # CI/CD Pipeline
-│
-├── config/
-│   ├── cloudinary.js              # Configuración de Cloudinary
-│   ├── database.js                # Conexión a MySQL
-│   ├── passport.js                # Estrategias de autenticación
-│   └── session.js                 # Configuración de sesiones
-│
-├── controllers/
-│   ├── auth/                      # Controladores de autenticación
-│   ├── data/                      # Controladores de datos
-│   └── PlansControllers.js        # Gestión de planes
-│
-├── middlewares/
-│   ├── apiKeyMiddleware.js         # Validación de API keys
-│   ├── authMiddleware.js           # Middleware de autenticación
-│   └── jwtMiddleware.js            # Validación de tokens JWT
-│
-├── models/
-│   ├── index.js                   # Configuración de modelos
-│   ├── Plan.js                    # Modelo de planes
-│   ├── progressWeight.js          # Progreso de peso
-│   ├── user.js                    # Modelo de usuarios
-│   └── weightGoal.js              # Objetivos de peso
-│
-├── routes/
-│   ├── authRoutes.js              # Rutas de autenticación
-│   ├── googleAuth.js              # Autenticación con Google
-│   └── protectedRoutes.js         # Rutas protegidas
-│
-├── services/
-│   └── resend.js                  # Servicio de emails
-│
-├── .env                           # Variables de entorno
-├── package.json                   # Dependencias del proyecto
-└── server.js                      # Punto de entrada de la aplicación
-```
+- **JWT Authentication**: Stateless token-based authentication
+- **Google OAuth 2.0**: Social authentication integration
+- **Secure Sessions**: Robust session management
+- **Password Recovery**: Email-based code verification system
 
-## 🎯 Nuestra Misión
+### 🍽️ Nutrition Plan Management
 
-Empoderar a las personas para que alcancen sus objetivos de salud y bienestar a través de planes de nutrición personalizados que sean accesibles, efectivos y disfrutables.
+- Personalized meal plan generation
+- Complete CRUD operations for plans
+- Nutritional goal tracking
+- Progress monitoring and analytics
 
-## 🔮 Nuestra Visión
+### 📊 Progress Tracking
 
-Revolucionar la forma en que las personas abordan la nutrición combinando tecnología de vanguardia con ciencia nutricional.
+- Weight record management
+- Goal setting and achievement tracking
+- Historical progress data
+- Visual statistics preparation
 
-## 💎 Nuestros Valores
+### 🛡️ Security & Validation
 
-### Personalización
-Creemos que no hay dos personas iguales, y sus planes de nutrición tampoco deberían serlo.
+- API key validation middleware
+- Input sanitization and validation
+- CORS configuration for secure cross-origin requests
+- Rate limiting and security headers
 
-### Adaptabilidad
-Aprendemos y nos ajustamos continuamente para ofrecerte las soluciones más efectivas.
+---
 
-### Simplicidad
-Hacemos que la nutrición sea sencilla y accesible, eliminando la complejidad.
+## 🛠️ Tech Stack
 
-## 🚀 Instalación y Configuración
+### Backend Core
 
-### Prerrequisitos
-- Node.js 16+ 
+- **[Node.js](https://nodejs.org/)** - JavaScript runtime environment
+- **[Express.js](https://expressjs.com/)** - Minimalist web framework
+- **[Sequelize](https://sequelize.org/)** - Promise-based Node.js ORM
+
+### Database
+
+- **[MySQL](https://mysql.com/)** - Relational database management system
+
+### Authentication & Security
+
+- **[JWT](https://jwt.io/)** - JSON Web Tokens for stateless authentication
+- **[Passport.js](http://www.passportjs.org/)** - Authentication middleware
+- **[bcrypt](https://github.com/kelektiv/node.bcrypt.js)** - Password hashing
+- **[Express Session](https://github.com/expressjs/session)** - Session management
+
+### External Services
+
+- **[Cloudinary](https://cloudinary.com/)** - Image management and storage
+- **[Resend](https://resend.com/)** - Email delivery service
+- **[Google OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)** - Social authentication
+
+### DevOps & Deployment
+
+- **[GitHub Actions](https://github.com/features/actions)** - CI/CD pipeline automation
+- **[Railway](https://railway.app/)** - Cloud deployment platform
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 16+
 - MySQL 8.0+
-- npm o yarn
+- npm or yarn
 
-### Instalación Local
+### Local Development
 
-1. **Clona el repositorio**
+1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/tu-usuario/planime-restful-api.git
+   git clone https://github.com/Diegoo717/PlaniMe-RESTful-API.git
    cd planime-restful-api
    ```
 
-2. **Instala dependencias**
+2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-3. **Configura variables de entorno**
+3. **Configure environment variables**
+
    ```bash
    cp .env.example .env
    ```
-   
-   Edita `.env` con tus configuraciones:
+
+   Edit `.env` with your configurations:
+
    ```env
    NODE_ENV=development
    PORT=5000
-   
-   # Database
+
+   # Database Configuration
    DB_HOST=localhost
-   DB_USER=tu_usuario
-   DB_PASS=tu_contraseña
+   DB_USER=your_username
+   DB_PASS=your_password
    DB_NAME=planime_db
-   
-   # JWT
-   JWT_SECRET=tu_jwt_secret_muy_seguro
-   
+
+   # JWT Configuration
+   JWT_SECRET=your_secure_jwt_secret
+
    # Google OAuth
-   GOOGLE_CLIENT_ID=tu_google_client_id
-   GOOGLE_CLIENT_SECRET=tu_google_client_secret
-   
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+
    # Cloudinary
-   CLOUDINARY_CLOUD_NAME=tu_cloud_name
-   CLOUDINARY_API_KEY=tu_api_key
-   CLOUDINARY_API_SECRET=tu_api_secret
-   
-   # Resend Email
-   RESEND_API_KEY=tu_resend_api_key
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
+
+   # Resend Email Service
+   RESEND_API_KEY=your_resend_api_key
    ```
 
-4. **Configura la base de datos**
+4. **Set up the database**
+
    ```bash
-   # Crear la base de datos
+   # Create database
    mysql -u root -p -e "CREATE DATABASE planime_db;"
-   
-   # Ejecutar migraciones (si las tienes)
+
+   # Run migrations (if available)
    npm run migrate
    ```
 
-5. **Inicia el servidor**
+5. **Start the server**
+
    ```bash
-   # Desarrollo
-   node server.js
-   
-   # Producción
-   node server.js
+   # Development
+   npm run dev
+
+   # Production
+   npm start
    ```
 
-## 🔌 Endpoints Principales
+---
 
-### Autenticación
+## 🔌 API Endpoints
+
+### Authentication
+
 ```http
-POST /api/register           # Registro de usuarios
-POST /api/login              # Inicio de sesión
-POST /api/emailForRecovery   # Recuperación de contraseña
-POST /api/codeVerification   # Verificación de código
+POST /api/register           # User registration
+POST /api/login              # User login
+POST /api/emailForRecovery   # Password recovery request
+POST /api/codeVerification   # Code verification for recovery
 ```
 
 ### Google OAuth
+
 ```http
-GET  /auth/google            # Iniciar autenticación con Google
-GET  /auth/google/callback   # Callback de Google OAuth
-GET  /auth/google-token      # Obtener JWT tras OAuth
-POST /auth/logout            # Cerrar sesión
+GET  /auth/google            # Initiate Google authentication
+GET  /auth/google/callback   # Google OAuth callback
+GET  /auth/google-token      # Get JWT after OAuth
+POST /auth/logout            # Logout user
 ```
 
-### Rutas Protegidas (requieren JWT)
-```http
-GET  /api/protected/session     # Validar sesión
-GET  /api/protected/profile     # Obtener perfil de usuario
-POST /api/protected/generatePlan # Crear plan nutricional
-GET  /api/protected/getPlansByID # Obtener planes del usuario
-DELETE /api/protected/deletePlanByID/:planId # Eliminar plan
+### Protected Routes (JWT Required)
 
-# Gestión de peso
-POST /api/protected/setWeightRecord    # Registrar peso
-POST /api/protected/setWeightGoal      # Establecer objetivo
-GET  /api/protected/getAllWeightR      # Obtener registros de peso
-PUT  /api/protected/changePassword     # Cambiar contraseña
+```http
+GET  /api/protected/session     # Validate user session
+GET  /api/protected/profile     # Get user profile
+POST /api/protected/generatePlan # Create nutritional plan
+GET  /api/protected/getPlansByID # Get user's plans
+DELETE /api/protected/deletePlanByID/:planId # Delete specific plan
+
+# Weight Management
+POST /api/protected/setWeightRecord    # Record weight entry
+POST /api/protected/setWeightGoal      # Set weight goal
+GET  /api/protected/getAllWeightR      # Get all weight records
+PUT  /api/protected/changePassword     # Change user password
 ```
 
-## 🔒 Seguridad
+---
 
-### Middleware de Seguridad
-- **JWT Authentication**: Validación de tokens en rutas protegidas
-- **API Key Validation**: Control de acceso mediante API keys
-- **CORS Configuration**: Configuración específica para dominios permitidos
-- **Session Management**: Gestión segura de sesiones para OAuth
+## 🔒 Security Features
 
-### Autenticación Múltiple
-- **Credenciales tradicionales**: Email/contraseña con JWT
-- **Google OAuth 2.0**: Autenticación social integrada
-- **Recuperación de contraseña**: Sistema de códigos de verificación por email
+### Authentication Layers
 
-## 🌐 Integración Frontend
+- **JWT Validation**: Secure token-based authentication for API endpoints
+- **Google OAuth Integration**: Social authentication with secure callback handling
+- **Session Management**: Secure session storage for OAuth flows
+- **Password Hashing**: bcrypt for secure password storage
 
-La API está configurada para trabajar con:
+### Security Middleware
+
+- **API Key Validation**: Controlled access through API keys
+- **CORS Configuration**: Domain-specific cross-origin requests
+- **Input Validation**: Data sanitization and validation
+- **Rate Limiting**: Protection against brute force attacks
+
+### Data Protection
+
+- **Environment Variables**: Secure configuration management
+- **Database Security**: Parameterized queries and connection pooling
+- **HTTPS Enforcement**: SSL/TLS in production environments
+
+---
+
+## 🌐 Frontend Integration
+
+The API is configured to work seamlessly with:
+
 - **PlaniMe WebApp**: `https://planime.diecode.lat`
-- **PlaniMe Mobile App**: [Descargar APK](https://planime.diecode.lat/assets/downloads/PlaniMe_v1.0.apk)
-- **Desarrollo local**: `http://localhost:5500`
+- **PlaniMe Mobile App**: [Download APK](https://planime.diecode.lat/assets/downloads/PlaniMe_v1.0.apk)
+- **Local Development**: `http://localhost:5500`
 
-## 📊 Base de Datos
+### CORS Configuration
 
-### Modelos Principales
-- **User**: Información de usuarios y autenticación
-- **Plan**: Planes nutricionales personalizados
-- **ProgressWeight**: Registros de seguimiento de peso
-- **WeightGoal**: Objetivos de peso de los usuarios
+```javascript
+// Configured for multiple frontend origins
+app.use(
+  cors({
+    origin: ["https://planime.diecode.lat", "http://localhost:5500"],
+    credentials: true,
+  })
+);
+```
 
-### Relaciones
+---
+
+## 📊 Database Architecture
+
+### Core Models
+
+- **User**: User authentication and profile information
+- **Plan**: Personalized nutrition plans with meal details
+- **ProgressWeight**: Historical weight tracking records
+- **WeightGoal**: User-defined weight objectives
+
+### Database Relationships
+
 ```sql
-User (1:N) Plan          # Un usuario puede tener múltiples planes
-User (1:N) ProgressWeight # Un usuario puede tener múltiples registros
-User (1:1) WeightGoal    # Un usuario tiene un objetivo de peso
+User (1:N) Plan          -- One user can have multiple plans
+User (1:N) ProgressWeight -- One user can have multiple weight records
+User (1:1) WeightGoal    -- One user has one weight goal
 ```
 
-## 🚢 Despliegue
+### Key Features
 
-### Railway (Producción)
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to Railway
-on:
-  push:
-    branches: [main]
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to Railway
-        run: railway deploy
-```
+- **Connection Pooling**: Optimized MySQL connections
+- **Data Validation**: Model-level validation constraints
+- **Associations**: Proper relational mappings
+- **Migrations**: Database schema version control
 
-### Variables de Entorno en Producción
-- Configurar todas las variables del `.env` en Railway
-- Asegurar conexión SSL con MySQL
-- Configurar dominio personalizado
+---
 
-## 📧 Servicios de Email
+## 🚢 Deployment
+
+### Environment Setup
+
+- Configure all environment variables
+- Ensure SSL connection with MySQL database
+- Set up custom domain configuration
+- Configure monitoring and logging
+
+---
+
+## 📧 Email Services
 
 ### Resend Integration
+
+The API integrates with Resend for email services including:
+
+- **Password Recovery**: Send verification codes for account recovery
+- **User Notifications**: Plan updates and progress alerts
+- **Account Verification**: Email confirmation for new users
+
 ```javascript
-// Recuperación de contraseña
+// Password recovery flow
 POST /api/emailForRecovery
 {
-  "email": "usuario@ejemplo.com"
+  "email": "user@example.com"
 }
 
-// Verificación de código
+// Code verification
 POST /api/codeVerification
 {
-  "email": "usuario@ejemplo.com",
+  "email": "user@example.com",
   "code": "123456"
 }
 ```
 
-## ⚡ Rendimiento
+---
 
-### Optimizaciones Implementadas
-- **Connection Pooling**: Pool de conexiones MySQL optimizado
-- **Middleware Caching**: Cache de respuestas frecuentes
-- **Async/Await**: Operaciones asíncronas optimizadas
-- **Error Handling**: Manejo robusto de errores
+## ⚡ Performance Optimizations
 
+### Database Optimization
 
+- **Connection Pooling**: Efficient MySQL connection management
+- **Query Optimization**: Optimized Sequelize queries with proper indexing
+- **Lazy Loading**: Efficient data loading patterns
 
-## 👨‍💻 Desarrollador
+### Application Performance
 
-**Ing. Diego Magaña Álvarez**
-- **Rol**: Arquitecto y Desarrollador Full-Stack
-- **Experiencia**: 3+ años en el ciclo completo de desarrollo de aplicaciones web/móviles y sistemas escalables
-- **Enfoque en el proyecto**: 
-  - Arquitectura de APIs RESTful escalables
-  - Sistemas de autenticación y autorización
-  - Integración de bases de datos relacionales
-  - Despliegue y DevOps en la nube
-  - Optimización de rendimiento backend
-  - Integración de servicios externos (OAuth, Email, Storage)
-- **Contacto**: [soydiegoo71@gmail.com](mailto:soydiegoo71@gmail.com)
+- **Middleware Caching**: Response caching for frequent requests
+- **Async/Await**: Non-blocking asynchronous operations
+- **Error Handling**: Robust error handling without performance impact
+- **Compression**: Response compression for faster transfers
 
-## 🌐 Aplicaciones Frontend
+### Monitoring & Logging
 
-- **PlaniMe WebApp**: [https://planime.diecode.lat](https://planime.diecode.lat)
-- **PlaniMe Mobile App**: [Descargar APK](https://planime.diecode.lat/assets/downloads/PlaniMe_v1.0.apk)
-
-## 🆘 Soporte
-
-¿Necesitas ayuda? Puedes:
-- Crear un [issue](https://github.com/tu-usuario/planime-restful-api/issues) en GitHub
-- Contactar al desarrollador: [soydiegoo71@gmail.com](mailto:soydiegoo71@gmail.com)
-- Visitar nuestra página de [contacto](https://planime.diecode.lat/pages/contact/contactUs.html)
+- **Request Logging**: Detailed request/response logging
+- **Error Tracking**: Comprehensive error tracking and reporting
+- **Performance Metrics**: Response time monitoring
 
 ---
 
-⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
+## 🌐 Connected Applications
 
-**PlaniMe** - Revolucionando la nutrición personalizada con tecnología backend robusta 🚀
+- **PlaniMe WebApp**: [https://planime.diecode.lat](https://planime.diecode.lat)
+- **PlaniMe Mobile App**: [Download APK](https://planime.diecode.lat/assets/downloads/PlaniMe_v1.0.apk)
+- **API Documentation**: [https://planime-rest-api.diecode.lat/](https://planime-rest-api.diecode.lat/)
+
+---
+
+## 📄 License
+
+© 2025 PlaniMe. All rights reserved.
+
+This project is a personal portfolio project and is not licensed for public use, modification, or distribution.
+
+---
+
+## 📞 Contact
+
+**Diego Magaña Álvarez**  
+_Full-Stack Developer_
+
+soydiegoo71@gmail.com | +52 445 105 9192
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/diego-magana-dev)
+
+---
+
+## 🙏 Acknowledgments
+
+- [Express.js Documentation](https://expressjs.com/)
+- [Sequelize ORM Documentation](https://sequelize.org/)
+- [JWT.io Documentation](https://jwt.io/)
+- [Passport.js Documentation](http://www.passportjs.org/)
+- [Resend Documentation](https://resend.com/docs)
+- [MySQL Documentation](https://dev.mysql.com/doc/)
+
+---
+
+<div align="center">
+
+⭐ If you like this project, don't forget to give it a star!
+
+**PlaniMe** - Revolutionizing personalized nutrition with robust backend technology 🚀
+
+**Made with ❤️ and ☕**
+
+</div>
