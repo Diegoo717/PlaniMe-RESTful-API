@@ -25,9 +25,10 @@ const db = {
 const syncDatabase = async () => {
   try {
     await sequelize.sync({ force: false });
-    console.log("Base de datos sincronizada.");
+    console.log("✅ Database synchronized successfully.");
   } catch (error) {
-    console.error("Error al sincronizar la base de datos:", error);
+    console.error("❌ Error synchronizing the database:", error);
+    process.exit(1);
   }
 };
 
